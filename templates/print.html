@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script>
+        function printContent() {
+            // Ouvre la page print_content dans une nouvelle fenêtre et l'imprime immédiatement
+            window.open("/print_content", "_blank");
+        }
+    </script>
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Library <span> Manager</span></h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/ajouter">Add Book</a></li>
+                    <li><a href="/lister">Manage Inventory</a></li>
+                    <li><a href="/print">Print Book List</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <div class="content">
+        <h1>Library Book List</h1>
+        
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year of Publication</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livre in livres %}
+                <tr>
+                    <td>{{ livre.titre }}</td>
+                    <td>{{ livre.auteur }}</td>
+                    <td>{{ livre.annee_publication }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p><br></p>
+        <div class="button-container">
+            <button onclick="printContent()" class="print-button">Print Book List</button>
+        </div> 
+    </div>
+
+
+    <footer>
+        <p>&copy; 2025 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

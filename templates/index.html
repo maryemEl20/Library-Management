@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Library <span> Manager</span></h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/ajouter">Add Book</a></li>
+                    <li><a href="/lister">Manage Inventory</a></li>
+                    <li><a href="/print">Print Book List</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="hero">
+            <h1>Library Management System</h1>
+            <p>Effortlessly manage your books and library inventory.</p>
+        </section>
+
+        <section id="features">
+            <div class="feature">
+                <h2><a href="/ajouter">Add New Book</a></h2>
+                <p>Add new titles to the library collection with ease.</p>
+            </div>
+            <div class="feature">
+                <h2><a href="/lister">Manage Inventory</a></h2>
+                <p>Organize and manage your library's inventory effectively.</p>
+            </div>
+            <div class="feature">
+                <h2><a href="/print">Print Book List</a></h2>
+                <p>Generate and print detailed book lists anytime.</p>
+            </div>
+        </section>
+
+        <section id="book-list">
+            <ul>
+       
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

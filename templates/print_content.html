@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">*
+
+    <script>
+        window.onload = function() {
+            // Lance l'impression directement lorsque la page est chargée
+            window.print();
+            // Ferme la fenêtre après l'impression
+            window.onafterprint = function() {
+                window.close();
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="content">
+        <h1>Library Book List</h1>
+
+        <div class="date">
+            <strong>Date:</strong> {{ current_date }}
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year of Publication</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livre in livres %}
+                <tr>
+                    <td>{{ livre.titre }}</td>
+                    <td>{{ livre.auteur }}</td>
+                    <td>{{ livre.annee_publication }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

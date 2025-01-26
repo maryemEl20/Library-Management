@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function confirmDelete(titre) {
+            var confirmation = confirm("Are you sure you want to delete the book: " + titre + "?");
+            if (confirmation) {
+                window.location.href = "/supprimer/" + titre;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Library <span> Manager</span></h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/ajouter">Add Book</a></li>
+                    <li><a href="/lister">Manage Inventory</a></li>
+                    <li><a href="/print">Print Book List</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="manage-inventory">
+            <h1>Manage Inventory</h1>
+             <!-- Affichage des messages flash -->
+             {% with messages = get_flashed_messages(with_categories=true) %}
+             {% if messages %}
+                 <ul>
+                     {% for category, message in messages %}
+                         <li class="{{ category }}">{{ message }}</li>
+                     {% endfor %}
+                 </ul>
+             {% endif %}
+         {% endwith %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Year of Publication</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for livre in livres %}
+                    <tr>
+                        <td>{{ livre.titre }}</td>
+                        <td>{{ livre.auteur }}</td>
+                        <td>{{ livre.annee_publication }}</td>
+                        <td>
+                            <button class="delete-btn" onclick="confirmDelete('{{ livre.titre }}')">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

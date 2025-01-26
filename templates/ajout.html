@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Library <span> Manager</span></h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/ajouter">Add Book</a></li>
+                    <li><a href="/lister">Manage Inventory</a></li>
+                    <li><a href="/print">Print Book List</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main>
+        <section id="add-book">
+            <h1>Add a New Book</h1>
+              <!-- Affichage des messages flash -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form method="POST">
+                <label for="titre">Title:</label>
+                <input type="text" name="titre" id="titre" required><br><br>
+
+                <label for="auteur">Author:</label>
+                <input type="text" name="auteur" id="auteur" required><br><br>
+
+                <label for="annee_publication">Year of Publication:</label>
+                <input type="number" name="annee_publication" id="annee_publication" required><br><br>
+
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* Style général pour la page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.content {
+    padding: 20px;
+    text-align: center;
+}
+h1, h2 {
+    text-align: center;
+}
+.date {
+    margin: 10px 0;
+    font-size: 16px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+th {
+    background-color: #ffffff;
+}
+
+/* Masquer la barre de navigation et le footer lors de l'impression */
+@media print {
+    /* Masquer la barre de navigation */
+    header, nav, .nav-bar {
+        display: none !important; /* Masquer complètement */
+    }
+
+    /* Masquer le footer */
+    footer {
+        display: none !important;
+    }
+
+    /* Masquer le bouton d'impression */
+    button {
+        display: none !important; 
+    }
+
+    /* Ajuster la table pour l'impression */
+    table {
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    /* Masquer l'espace autour de la page pour éviter les marges inutiles */
+    body {
+        margin: 0;
+    }
+
+    .content {
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+
+
+
+
