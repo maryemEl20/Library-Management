@@ -26,7 +26,7 @@ class Bibliotheque:
     def charger_livres(self, fichier):
         """Charge les livres depuis le fichier texte."""
         try:
-            with open(fichier, 'r') as f:
+            with open(fichier, "r" ,errors="replace") as f:
                 for line in f:
                     titre, auteur, annee_publication = line.strip().split(';')
                     self.ajouter_livre(Livre(titre, auteur, int(annee_publication)))
@@ -34,7 +34,12 @@ class Bibliotheque:
             print(f"Le fichier {fichier} n'existe pas.")
 
     def sauvegarder_livres(self, fichier):
-        """Sauvegarde les livres dans le fichier texte."""
-        with open(fichier, 'w') as f:
-            for livre in self.livres:
-                f.write(f"{livre.titre};{livre.auteur};{livre.annee_publication}\n")
+        """Sauvegarde les livres dans le fichier texte en UTF-8."""
+        try:
+            with open(fichier, 'w') as f:
+                for livre in self.livres:
+                    f.write(f"{livre.titre};{livre.auteur};{livre.annee_publication}\n")
+            print(f"Les livres ont été sauvegardés dans {fichier}.")
+        except Exception as e:
+            print(f"Erreur lors de la sauvegarde : {e}")
+
