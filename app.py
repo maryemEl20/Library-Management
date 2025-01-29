@@ -34,19 +34,43 @@ def ajouter_livre():
         # Créer un nouvel objet Livre avec les données du formulaire
         livre = Livre(titre, auteur, annee_publication)
 
-        # Ajouter ce livre à la bibliothèque
-        bibliotheque.ajouter_livre(livre)
+        # Vérifier si le livre peut être ajouté
+        if bibliotheque.ajouter_livre(livre):
+            # Sauvegarder la bibliothèque dans le fichier après l'ajout
+            bibliotheque.sauvegarder_livres(fichier)
+            flash(f"The book '{titre}' has been added successfully.", "success")
+        else:
+            # Afficher un message d'erreur si le livre existe déjà
+            flash(f"The book '{titre}' already exists in the library!", "error")
 
-        # Sauvegarder la bibliothèque dans le fichier après l'ajout
-        bibliotheque.sauvegarder_livres(fichier)
-        # Flash success message
-        flash(f"The book '{titre}' has been added successfully.", "success")
-        
-        
-        # Rediriger l'utilisateur vers la page d'accueil (ou index)
-        return render_template('ajout.html')  # Rester sur la même page après l'ajout
+        # Rediriger l'utilisateur vers la page d'ajout
+        return render_template('ajout.html')
 
     return render_template('ajout.html')
+
+# def ajouter_livre():
+#     if request.method == 'POST':
+#         # Récupérer les informations soumises par le formulaire
+#         titre = request.form['titre']
+#         auteur = request.form['auteur']
+#         annee_publication = int(request.form['annee_publication'])
+
+#         # Créer un nouvel objet Livre avec les données du formulaire
+#         livre = Livre(titre, auteur, annee_publication)
+
+#         # Ajouter ce livre à la bibliothèque
+#         bibliotheque.ajouter_livre(livre)
+
+#         # Sauvegarder la bibliothèque dans le fichier après l'ajout
+#         bibliotheque.sauvegarder_livres(fichier)
+#         # Flash success message
+#         flash(f"The book '{titre}' has been added successfully.", "success")
+        
+        
+#         # Rediriger l'utilisateur vers la page d'accueil (ou index)
+#         return render_template('ajout.html')  # Rester sur la même page après l'ajout
+
+#     return render_template('ajout.html')
 
 @app.route('/supprimer/<titre>')
 def supprimer_livre(titre):

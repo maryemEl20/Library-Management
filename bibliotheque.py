@@ -6,9 +6,18 @@ class Bibliotheque:
     def __init__(self):
         self.livres = []
 
+    # def ajouter_livre(self, livre):
+    #     """Ajoute un livre à la bibliothèque."""
+    #     self.livres.append(livre)
+
+
     def ajouter_livre(self, livre):
-        """Ajoute un livre à la bibliothèque."""
-        self.livres.append(livre)
+            """Ajoute un livre à la bibliothèque s'il n'est pas déjà présent."""
+            for l in self.livres:
+                if l.titre.lower() == livre.titre.lower():  # Vérification par titre
+                    return False  # Retourne False si le livre existe déjà
+            self.livres.append(livre)
+            return True  # Retourne True si le livre est ajouté avec succès
 
     def supprimer_livre(self, titre):
         """Supprime un livre de la bibliothèque par son titre."""

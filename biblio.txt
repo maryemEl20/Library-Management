@@ -1,4 +1,5 @@
-1984;George Orwell;1949
-Le Petit Prince;Antoine de Saint-Exupéry;1945
-le dernier jour d'un condamné;Victor Hugo;1829
-the great gatsby;Antoine de Saint-Exupéry;1920
+Alice's Adventures in Wonderland;Lewis Carroll;1950
+L'Étranger;Albert Camus;1942
+Voyage au bout de la nuit;Louis-Ferdinand Céline;1932
+Crime et châtiment;Fédor Dostoïevski;1866
+Madame Bovary;Gustave Flaubert;1857
